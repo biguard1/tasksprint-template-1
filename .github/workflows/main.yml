@@ -63,12 +63,14 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
-            php artisan cache:clear
-            php artisan config:clear
-            php artisan route:clear
-            php artisan view:clear
-            php artisan event:clear
-            php artisan optimize:clear
+            if [ -d ".git" ]; then
+              php artisan cache:clear
+              php artisan config:clear
+              php artisan route:clear
+              php artisan view:clear
+              php artisan event:clear
+              php artisan optimize:clear
+            fi
 
       - name: Deploy to Server
         uses: up9cloud/action-rsync@master
