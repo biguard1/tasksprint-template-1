@@ -81,7 +81,7 @@ jobs:
           USER: ${{ secrets.SSH_USER }}
           PASSWORD: ${{ secrets.SSH_PASSWORD }}
           TARGET: ${{ secrets.DEPLOY_PATH }}
-          ARGS: "-avz --filter='dir-merge,-n /.gitignore'"
+          ARGS: "-avz --filter='dir-merge,-n /.gitignore' --include='/public/build'"
 
       - name: Laravel Cache and Optimizations
         uses: appleboy/ssh-action@v1.2.2
