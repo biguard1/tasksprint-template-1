@@ -63,7 +63,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
-            if [ -d ".git" ]; then
+            if [ -f "artisan" ]; then
               php artisan cache:clear
               php artisan config:clear
               php artisan route:clear
